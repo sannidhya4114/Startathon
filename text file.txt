@@ -1,0 +1,160 @@
+TEAM POLAR BEAR 
+
+Off-road semantic scene segmentation using synthetic desert data.
+
+
+#OVERVIEW
+
+Off-road semantic scene segmentation using synthetic desert data is the process of training an AI-model to classify every pixel in desert off-road images using simulated digital twin data , enabling Unmanned Ground Vehicles (UGV) to accurately understand terrain , obstacles , drivable areas and vegetations.
+
+It is done so that the UGV can safely navigate around without colliding into any obstacles.
+
+The model is trained to classify every pixel in the image to classify into categories like rocks , logs , trees , landscape and sky assuring a hassle free journey .
+
+#OBJECTIVE
+
+Generate synthetic desert dataset.
+
+Train a semantic segmentation model.
+
+Evaluate segmentation performance. 
+
+Compare predictions with ground truth.
+
+Create a model which can learn from the synthetic desert dataset.
+
+#PROBLEM STATEMENT 
+
+Autonomous off-road vehicles often have to go through unstructured environment conditions like through rocks , rough terrains and unpredictable vegetation on the way. 
+
+Traditional sensors and computer systems struggle to identify these obstacles in complex scenes.
+
+To enable safe navigation and avoid collision we require a robust navigating system which can guide us through terrains and help us avoid obstacles.
+Traditional computer vision systems and sensors struggle to accurately distinguish between drivable ground and obstacles in such complex scenes.
+
+To enable safe navigation and collision avoidance , a robust semantic segmentation model is required that can precisely classify every pixel in a desert environment.
+
+This project aims to train a model using synthetic desert data so that it can evaluate its performance on unseen environmental conditions.
+
+
+#CLASSIFICATION CATEGORIES
+
+VEGETATION : trees , lush bushes , dry grass , dry bushes. 
+
+OBSTACLES : rocks , logs.
+
+ ENVIRONMENT : landscape , sky.
+
+DETAILS : flowers , ground clutter.
+
+
+#METHODOLOGY
+
+DATASET : We used the synthetic desert dataset provided by Duality AI’s Falcon platform.
+
+PREPROCESSING : Images were rezised and normalised , data augmentation was applied to improve model robustness.
+
+PERFORMANCE EVALUATION : Compared predictions against ground truth ( the actual answer used as a reference to evaluate the model)
+
+#SOLUTION / APPORACH 
+
+We trained a semantic segmentation model to identify desert terrain features using synthetic data. First, we generated synthetic desert images with pixel-wise labels for sand, rocks, vegetation, sky, obstacles, and vehicles.
+ The images and masks were preprocessed by resizing and normalizing them for model input. We used a segmentation model such as UNet or DeepLabv3 for pixel-level classification. 
+The model was trained on the synthetic dataset using cross-entropy loss. Evaluation was done on unseen images using metrics like pixel accuracy and  Intersection over Union (IoU). Finally, predictions were visualised alongside ground truth to assess performance.
+
+ #CHALLENGES FACED 
+Models trained on synthetic desert images may not generalise well to real desert environments due to differences in lighting, texture randomness, shadows, and noise.
+
+Some classes like sand dominate most pixels, while small objects like rocks or obstacles occupy very few pixels. This can bias the model toward majority classes.
+Detecting small obstacles in large desert scenes is difficult because they occupy very few pixels and may blend into the background.
+
+Sand, dry vegetation, and certain rocks can look visually similar, causing misclassification.
+
+Hardware capability where the system is taking lot of time to calculate the IoU score.
+
+if the dataset lacks variation, the model may memorise patterns instead of learning general features.
+
+
+#TECH STACK
+
+Python 
+Javascript 
+HTML and CSS
+React 
+
+
+
+
+
+#INSTALLATION 
+
+
+Follow these steps to set up the environment on your local machine:
+
+1.Clone the Repository:
+
+Bash
+git clone [https://github.com/bglord22/Off-road-Desert-Segmentation-AI] ——— GitHub link
+cd [HACKATHON]——— folder link 
+
+2.Install Dependencies:
+Ensure you have Python 3.8+ installed. It is recommended to use a virtual environment.
+
+Bash
+pip install torch torchvision segmentation-models-pytorch albumentations opencv-python matplotlib
+Hardware Requirement:
+The model is optimised for NVIDIA GPUs (RTX 3050 4GB VRAM tested) using CUDA.
+
+
+
+#USAGE 
+
+TRAINING THE MODEL : to reproduce the results , run the training script. It will automatically use the best performing parameters and save the weights. 
+Bash
+	python baseline.py
+
+#TESTING AND VISUALISATION
+
+To run the model on test images and see color coded segmentation masks:
+
+Bash 
+Python test_ai.py
+
+
+#FEATURES 
+
+10- CLASS SEMANTIC MAPPING: Uses a custom CLASS_MAP to translate raw sensor IDs (example- 800 for rocks , 10000 for sky) into training-ready indices.
+
+OPTIMISED ARCHITECTURE: Utilises a U -Net with an efficentNet-B0 backbone for high accuracy with low computational overhead.
+
+HYBRID LOSS FUNCTION: Combines weighted cross-entropy (to handle rare classes like flowers and logs) with dice loss (for boundary precision).
+
+ADVANCED AUGMENTATION: Implements horizontal flips , brightness contrast and spatial rotations to ensure the model generalises to “ novel environments”.
+
+PERFORMANCE MONITORING:  Real-time tracking of Mean Intersection over Union (mloU) and combo loss per batch.
+
+
+
+
+#RESULTS
+
+
+EPOCH		TRAIN LOSS 		VAL LOSS 	VAL loU 
+1			0.1769			0.052		0.9566
+2			0.0153			0.021		0.972			
+3			0.0053			0.015		0.9881			
+4			0.0026			0.0059		1	
+5			0.0015			0.0032		1
+
+VISUAL REPRESENTATION: https://drive.google.com/file/d/1gF3yF5KlH0JHSJuyCSW9IvMV7MG0xIah/view?usp=share_link
+
+
+#MADE BY TEAM POLAR BEAR 
+
+BHAVISHYA GUPTA (25BCE10588)
+
+SANNIDHYA AGRAWAL (25BHI10048)
+
+SURYA SNATO SINHA (25BCE10164)
+
+DIVYANSH ARORA  (25BAI11338)
